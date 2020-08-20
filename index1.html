@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="../bootstrap-3.3.7/dist/css/bootstrap.min.css"> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        img {
+            vertical-align: bottom;
+        }
+
+        body {
+            min-width: 1226px;
+        }
+
+
+        .header {
+            height: 40px;
+            background-color: rgb(36, 34, 34);
+
+        }
+
+        .h1 {
+            width: 1226px;
+            height: 40px;
+            /* border: 1px solid red; */
+            margin: auto;
+        }
+
+        .h2>li,
+        .h3>li {
+            float: left;
+            font-size: 13px;
+
+        }
+
+        .h2 a {
+            line-height: 40px;
+            color: rgb(177, 172, 172);
+        }
+
+        .h2 span {
+            padding: 0 10px;
+            color: rgb(87, 85, 85);
+        }
+
+        .h2 a:hover {
+            color: #fff;
+        }
+
+        .h3>li {
+            float: right;
+        }
+
+        .h3>li:nth-child(2) {
+            margin-right: 80px;
+        }
+
+        .h3>li:nth-child(1) {
+            padding-right: 70px;
+        }
+
+        .h3 a {
+            line-height: 40px;
+            color: rgb(177, 172, 172);
+        }
+
+        .h3 span {
+            color: rgb(177, 172, 172);
+        }
+
+        .h3 a:hover {
+            color: #fff;
+
+        }
+
+        .h3-1:hover {
+            background-color: rgb(156, 148, 148);
+        }
+
+        /* 第二部分 */
+        .b {
+            height: 100px;
+            width: 1226px;
+            margin: auto;
+            /* border: 1px solid red; */
+            display: flex;
+            align-items: center;
+        }
+
+        .b-1 {
+            width: 55px;
+            height: 55px;
+            background: url(https://account.xiaomi.com/static/res/349d9c1/account-static/respassport/acc-2014/img/milogo.png);
+            background-repeat: no-repeat;
+
+        }
+
+        .b-2 {
+            width: 165px;
+            height: 55px;
+            background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b06819007feedbea62aedaa3089633d2.gif?w=165&h=55);
+            background-repeat: no-repeat;
+
+        }
+
+        .b-3>ul {
+            display: flex;
+        }
+
+        .b-3 li {
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        .b-3 a:hover {
+            color: orange;
+        }
+
+        .b-4-1 {
+            width: 260px;
+            height: 48px;
+            margin-left: 73px;
+
+        }
+
+        /* 轮播图 */
+
+        .c,
+        .c:hover,
+        .c:active {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .banner img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .banner {
+            width: 1226px;
+            height: 460px;
+            position: relative;
+            /* border: 3px solid #000; */
+            margin: auto;
+        }
+
+        .banner ul {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .banner ul li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            /* 过度属性也可以实现 move运动函数也可以实现 */
+            /* transition: all 1s linear; */
+        }
+
+        .banner ol {
+            padding: 0 10px;
+            height: 50px;
+            /* background: rgba(0, 0, 0, .5); */
+            position: absolute;
+            bottom: 10px;
+            right: 1%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            border-radius: 15px;
+            z-index: 1000;
+        }
+
+        .banner ol li {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgb(190, 188, 188);
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .banner ol li.active {
+            background: #fff;
+        }
+
+        .banner ol li:hover {
+            background: #fff;
+        }
+
+        .banner div {
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            left: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+
+
+        }
+
+        .banner div a {
+            width: 40px;
+            height: 40px;
+            font-size: 30px;
+            font-weight: 900;
+            color: rgba(194, 184, 184, 0.548);
+            /* background: rgba(112, 106, 106, 0.5); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* display: none; */
+        }
+
+        .banner div a:hover {
+            background: rgba(112, 106, 106, 0.5);
+        }
+
+        .banner a:nth-child(1) {
+            position: relative;
+            top: -10%;
+            right: -234px;
+        }
+
+        .banner a:nth-child(2) {
+            position: relative;
+            top: -66%;
+            right: -1185px;
+        }
+
+        /* 轮播图左边导航 */
+        .lenav {
+            width: 234px;
+            height: 420px;
+            /* border: 1px solid red; */
+            background: rgba(0,0,0,.5);
+            position: absolute;
+            top: 140px;
+            left: 18px;
+            padding: 20px 0;
+        }
+
+        .lenav li {
+            width: 204px;
+            height: 42px;
+            font-size: 14px;
+            line-height: 42px;
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .lenav a {
+            color: #fff;
+        }
+
+        .lenav li:hover {
+            background: orangered;
+        }
+
+        .lenav1 {
+            width: 700px;
+            height: 100%;
+            background: white;
+            /* border: 1px solid red; */
+            position: absolute;
+            top: 0;
+            left: 233px;
+            display: none;
+        }
+
+        .lenav li:hover .lenav1 {
+            display: block;
+        }
+
+        /* 导航里的下拉菜单 */
+        .lenav2 img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .lenav2 {
+            padding: 30px;
+            float: left;
+        }
+
+        /* 四张图 */
+        .d {
+            width: 1226px;
+            height: 170px;
+            margin: auto;
+            /* border: 1px solid red; */
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .d>ul {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .d li {
+            width: 295px;
+            height: 170px;
+        }
+
+        .d img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 小米闪购 */
+        .E {
+            width: 1226px;
+            height: 370px;
+            margin: auto;
+            margin-bottom: 25px;
+            /* border: 1px solid red; */
+            background: gainsboro;
+        }
+
+        .E>h1 {
+            font-size: 22px;
+            font-weight: 200;
+            line-height: 58px;
+        }
+
+        .E ul {
+            display: flex;
+            justify-content: space-between;
+
+
+        }
+
+        .E li {
+            width: 270px;
+            height: 310px;
+            /* border: 1px solid orchid; */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            background: #fff;
+        }
+
+        .E1>img {
+            width: 150px;
+            height: 150px;
+
+        }
+
+        .E2 {
+            color: rgb(168, 164, 164);
+        }
+
+        .E3 {
+            color: red;
+        }
+
+        /* 插图 */
+        .F {
+            width: 1226px;
+            height: 120px;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+
+        .F>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 手机 */
+        .shouji {
+            width: 1226px;
+            height: 678px;
+            margin: auto;
+            margin-bottom: 25px;
+            background: gainsboro;
+            /* border: 1px solid red; */
+        }
+
+        .shouji>h1,
+        .jia>h1 {
+            font-size: 22px;
+            font-weight: 200;
+            line-height: 58px;
+        }
+
+        .shouji-1 {
+            width: 100%;
+            height: 619px;
+            /* border:1px solid springgreen; */
+            display: flex;
+        }
+
+        .shouji-2 {
+            width: 234px;
+            height: 100%;
+            /* border: 1px solid blue; */
+        }
+
+        .shouji-2>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .shouji-3 {
+            width: 992px;
+            height: 100%;
+            /* border: 1px solid blue; */
+
+        }
+
+        .shouji-3-1 {
+            width: 310px;
+            height: 299px;
+            margin-left: 18px;
+            margin-bottom: 18px;
+            background: #fff;
+            /* border: 1px solid purple; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            float: left;
+        }
+
+        .shouji-3-1>img,
+        .shouji-4-1>img {
+            width: 160px;
+            height: 160px;
+        }
+
+        .shouji-3-2,
+        .shouji-3-4 {
+            font-size: 18px;
+        }
+
+        .shouji-3-4 {
+            color: red;
+        }
+
+        .shouji-3-3 {
+            font-size: 14px;
+            color: gainsboro;
+            margin: 20px 0;
+        }
+
+        /* 家电 */
+        .jia {
+            width: 1226px;
+            height: 678px;
+            margin: auto;
+            margin-bottom: 25px;
+            background: gainsboro;
+            /* border: 1px solid red; */
+        }
+
+        .shouji-4 {
+            width: 100%;
+            height: 100%;
+        }
+
+        .shouji-4-1 {
+            width: 284px;
+            height: 291px;
+            margin-left: 18px;
+            margin-bottom: 18px;
+            background: #fff;
+            /* border: 1px solid purple; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            float: left;
+        }
+
+        /* 底部 */
+        .dibu{
+            width: 1226px;
+            margin: auto;
+        }
+        .dibu>ul{
+            display: flex;
+            justify-content: space-between;
+        }
+        .dibu li{
+            font-size: 16px;
+            line-height: 22px;
+            color: gray;
+        }
+        .dibu span{
+            color: gray;
+
+        }
+        /* 返回顶部 */
+        .back{
+            width: 26px;
+            height: 35px;
+            background: rgb(216, 175, 182);
+            color: rgb(145, 136, 136);
+            font-size: 12px;
+            position: fixed;
+            right: 1px;
+            bottom: 75px;
+            display:none;
+            cursor: pointer;
+        }
+           
+         </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="h1">
+            <ul class="h2">
+                <li>
+                    <a href="#">小米商城</a>
+                    <span>|</span>
+                </li>
+                <li>
+                    <a href="#"> MIUI</a>
+                    <span>|</span>
+                </li>
+                <li>
+                    <a href="#"> IoT</a>
+                    <span>|</span>
+                </li>
+                <li>
+                    <a href="#"> 云服务</a>
+                    <span>|</span>
+                </li>
+                <li>
+                    <a href="#"> 金融</a>
+                    <span>|</span>
+                </li>
+                <li>
+                    <a href="#"> 有品</a>
+                    <span>|</span>
+                </li>
+                <li>
+                    <a href="#"> 小爱开放平台</a>
+                    <span>|</span>
+                </li>
+                <li>
+                    <a href="#"> 资质证照</a>
+                    <span>|</span>
+                </li>
+                <li>
+                    <a href="#"> 协议规则</a>
+                    <span>|</span>
+                </li>
+                <li>
+                    <a href="#"> 下载app</a>
+                    <span>|</span>
+                </li>
+                <li>
+                    <a href="#"> Select Location</a>
+                </li>
+            </ul>
+
+            <ul class="h3">
+                <li>
+                    <a href="JavaScript:;" name="buyCar" class="h3-1">购物车</a>
+                </li>
+                <li>
+                    <a href="../xiangmu/pages/2.zhuce.html">注册</a>
+                </li>
+                <li>
+                    <a href="JavaScript:;" name="login">登录</a>
+                    <span>|</span>
+                    <a href="./index1.html" name="back" class="btn btn-danger btn-lg" role="button">退出登录</a>
+                    <span>|</span>
+                </li>
+            </ul>
+            <div>
+
+            </div>
+        </div>
+    </div>
+    <!-- 第二部分 -->
+    <div class="b">
+        <div class="b-1"></div>
+        <div class="b-2"></div>
+        <div class="b-3">
+            <ul>
+                <li>
+                    <a href="">小米手机</a>
+                </li>
+                <li>
+                    <a href="">Redmi红米</a>
+                </li>
+                <li>
+                    <a href="">电视</a>
+                </li>
+                <li>
+                    <a href="">笔记本</a>
+                </li>
+                <li>
+                    <a href="">家电</a>
+                </li>
+                <li>
+                    <a href="">路由器</a>
+                </li>
+                <li>
+                    <a href="">只能硬件</a>
+                </li>
+                <li>
+                    <a href="">服务</a>
+                </li>
+                <li>
+                    <a href="">社区</a>
+                </li>
+            </ul>
+        </div>
+        <div class="b-4">
+            <input type="text" class="b-4-1" placeholder="搜索">
+        </div>
+
+    </div>
+    <!-- 第三部分 -->
+    <div class="banner">
+        <ul>
+            <li style="opacity: 1;"><img src="../xiangmu/imgages/1.jpg" alt=""></li>
+            <li><img src="../xiangmu/imgages/2.jpg" alt=""></li>
+            <li><img src="../xiangmu/imgages/3.jpg" alt=""></li>
+            <li><img src="../xiangmu/imgages/4.jpg" alt=""></li>
+            <li><img src="../xiangmu/imgages/5.jpg" alt=""></li>
+        </ul>
+        <ol></ol>
+        <div>
+            <a class="c" href="JavaScript:;" name="left">&lt;</a>
+            <a class="c" href="JavaScript:;" name="right">&gt;</a>
+        </div>
+
+    </div>
+    <!-- 轮播图左边导航 -->
+    <div class="lenav">
+        <ul>
+            <li><a href="./pages/3.liebiao.html?cat_one_id=食品酒水"> 手机 电话卡</a>
+                <div class="lenav1">
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                </div>
+            </li>
+            <li><a href="./pages/3.liebiao.html?cat_one_id=童装玩具">电视 盒子</a>
+                <div class="lenav1">
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+
+                </div>
+            </li>
+            <li><a href="./pages/3.liebiao.html?cat_one_id=家装建材">笔记本 显示器</a>
+                <div class="lenav1">
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                </div>
+            </li>
+            <li><a href="./pages/3.liebiao.html?cat_one_id=奶粉尿裤">家电 插线板</a>
+                <div class="lenav1">
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                    <div class="lenav2">
+                        <img src="../xiangmu/imgages/6.jpg" alt="">
+                        <p>小米10pro</p>
+                    </div>
+                </div>
+            </li>
+            <li><a href="./pages/3.liebiao.html?cat_one_id=其他&name=张三&age=18">出行 穿戴</a>
+                <div class="lenav1"></div>
+            </li>
+            <li><a href="#">智能 路由器</a>
+                <div class="lenav1"></div>
+            </li>
+            <li><a href="#">电源 配件</a>
+                <div class="lenav1"></div>
+            </li>
+            <li><a href="#">健康儿童</a>
+                <div class="lenav1"></div>
+            </li>
+            <li><a href="#">耳机 音箱</a>
+                <div class="lenav1"></div>
+            </li>
+            <li><a href="#">生活 箱包</a>
+                <div class="lenav1"></div>
+            </li>
+        </ul>
+    </div>
+    <!-- 四张图 -->
+    <div class="d">
+        <ul>
+            <li><img src="../xiangmu/imgages/7.jpg" alt=""></li>
+            <li><img src="../xiangmu/imgages/8.jpg" alt=""></li>
+            <li><img src="../xiangmu/imgages/9.jpg" alt=""></li>
+            <li><img src="../xiangmu/imgages/7.jpg" alt=""></li>
+        </ul>
+    </div>
+    <!-- 小米闪购 -->
+    <div class="E">
+        <h1>小米闪购</h1>
+        <div>
+            <ul>
+                <li class="E1">
+                    <img src="../xiangmu/imgages/10.jpg" alt="">
+                    <h3>小米手环4 石墨黑</h3>
+                    <p class="E2">大屏显彩</p>
+                    <p class="E3">149元</p>
+                </li>
+                <li class="E1">
+                    <img src="../xiangmu/imgages/10.jpg" alt="">
+                    <h3>小米手环4 石墨黑</h3>
+                    <p class="E2">大屏显彩</p>
+                    <p class="E3">149元</p>
+                </li>
+                <li class="E1">
+                    <img src="../xiangmu/imgages/10.jpg" alt="">
+                    <h3>小米手环4 石墨黑</h3>
+                    <p class="E2">大屏显彩</p>
+                    <p class="E3">149元</p>
+                </li>
+                <li class="E1">
+                    <img src="../xiangmu/imgages/10.jpg" alt="">
+                    <h3>小米手环4 石墨黑</h3>
+                    <p class="E2">大屏显彩</p>
+                    <p class="E3">149元</p>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- 插图 -->
+    <div class="F">
+        <img src="../xiangmu/imgages/11.jpg" alt="">
+    </div>
+    <!-- 手机 -->
+    <div class="shouji">
+        <h1>手机</h1>
+        <div class="shouji-1">
+            <div class="shouji-2">
+                <img src="../xiangmu/imgages/12.jpg" alt="">
+            </div>
+            <div class="shouji-3">
+                <div class="shouji-3-1">
+                    <img src="../xiangmu/imgages/13.jpg" alt="">
+                    <p class="shouji-3-2">腾讯黑鲨3s</p>
+                    <p class="shouji-3-3">骁龙865处理器，120赫兹刷新率</p>
+                    <p class="shouji-3-4">3999元起</p>
+                </div>
+                <div class="shouji-3-1">
+                    <img src="../xiangmu/imgages/13.jpg" alt="">
+                    <p class="shouji-3-2">腾讯黑鲨3s</p>
+                    <p class="shouji-3-3">骁龙865处理器，120赫兹刷新率</p>
+                    <p class="shouji-3-4">3999元起</p>
+                </div>
+                <div class="shouji-3-1">
+                    <img src="../xiangmu/imgages/13.jpg" alt="">
+                    <p class="shouji-3-2">腾讯黑鲨3s</p>
+                    <p class="shouji-3-3">骁龙865处理器，120赫兹刷新率</p>
+                    <p class="shouji-3-4">3999元起</p>
+                </div>
+                <div class="shouji-3-1">
+                    <img src="../xiangmu/imgages/13.jpg" alt="">
+                    <p class="shouji-3-2">腾讯黑鲨3s</p>
+                    <p class="shouji-3-3">骁龙865处理器，120赫兹刷新率</p>
+                    <p class="shouji-3-4">3999元起</p>
+                </div>
+                <div class="shouji-3-1">
+                    <img src="../xiangmu/imgages/13.jpg" alt="">
+                    <p class="shouji-3-2">腾讯黑鲨3s</p>
+                    <p class="shouji-3-3">骁龙865处理器，120赫兹刷新率</p>
+                    <p class="shouji-3-4">3999元起</p>
+                </div>
+                <div class="shouji-3-1">
+                    <img src="../xiangmu/imgages/13.jpg" alt="">
+                    <p class="shouji-3-2">腾讯黑鲨3s</p>
+                    <p class="shouji-3-3">骁龙865处理器，120赫兹刷新率</p>
+                    <p class="shouji-3-4">3999元起</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 家电插图 -->
+    <div class="F">
+        <img src="../xiangmu/imgages/14.jpg" alt="">
+    </div>
+    <!-- 家电 -->
+    <div class="jia">
+        <h1>家电</h1>
+        <div class="shouji-4">
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/15.jpg" alt="">
+                <p class="shouji-3-2">小米全面屏</p>
+                <p class="shouji-3-3">全面屏设计，人工智能语音</p>
+                <p class="shouji-3-4">1599元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/15.jpg" alt="">
+                <p class="shouji-3-2">小米全面屏</p>
+                <p class="shouji-3-3">全面屏设计，人工智能语音</p>
+                <p class="shouji-3-4">1599元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/15.jpg" alt="">
+                <p class="shouji-3-2">小米全面屏</p>
+                <p class="shouji-3-3">全面屏设计，人工智能语音</p>
+                <p class="shouji-3-4">1599元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/15.jpg" alt="">
+                <p class="shouji-3-2">小米全面屏</p>
+                <p class="shouji-3-3">全面屏设计，人工智能语音</p>
+                <p class="shouji-3-4">1599元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/15.jpg" alt="">
+                <p class="shouji-3-2">小米全面屏</p>
+                <p class="shouji-3-3">全面屏设计，人工智能语音</p>
+                <p class="shouji-3-4">1599元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/15.jpg" alt="">
+                <p class="shouji-3-2">小米全面屏</p>
+                <p class="shouji-3-3">全面屏设计，人工智能语音</p>
+                <p class="shouji-3-4">1599元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/15.jpg" alt="">
+                <p class="shouji-3-2">小米全面屏</p>
+                <p class="shouji-3-3">全面屏设计，人工智能语音</p>
+                <p class="shouji-3-4">1599元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/15.jpg" alt="">
+                <p class="shouji-3-2">小米全面屏</p>
+                <p class="shouji-3-3">全面屏设计，人工智能语音</p>
+                <p class="shouji-3-4">1599元</p>
+            </div>
+        </div>
+    </div>
+    <!-- 智能插图 -->
+    <div class="F">
+        <img src="../xiangmu/imgages/16.jpg" alt="">
+    </div>
+    <!-- 智能 -->
+    <div class="jia">
+        <h1>智能</h1>
+        <div class="shouji-4">
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/17.jpg" alt="">
+                <p class="shouji-3-2">小米智能门锁</p>
+                <p class="shouji-3-3">告别钥匙，畅享智能生活</p>
+                <p class="shouji-3-4">999元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/17.jpg" alt="">
+                <p class="shouji-3-2">小米智能门锁</p>
+                <p class="shouji-3-3">告别钥匙，畅享智能生活</p>
+                <p class="shouji-3-4">999元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/17.jpg" alt="">
+                <p class="shouji-3-2">小米智能门锁</p>
+                <p class="shouji-3-3">告别钥匙，畅享智能生活</p>
+                <p class="shouji-3-4">999元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/17.jpg" alt="">
+                <p class="shouji-3-2">小米智能门锁</p>
+                <p class="shouji-3-3">告别钥匙，畅享智能生活</p>
+                <p class="shouji-3-4">999元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/17.jpg" alt="">
+                <p class="shouji-3-2">小米智能门锁</p>
+                <p class="shouji-3-3">告别钥匙，畅享智能生活</p>
+                <p class="shouji-3-4">999元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/17.jpg" alt="">
+                <p class="shouji-3-2">小米智能门锁</p>
+                <p class="shouji-3-3">告别钥匙，畅享智能生活</p>
+                <p class="shouji-3-4">999元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/17.jpg" alt="">
+                <p class="shouji-3-2">小米智能门锁</p>
+                <p class="shouji-3-3">告别钥匙，畅享智能生活</p>
+                <p class="shouji-3-4">999元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/17.jpg" alt="">
+                <p class="shouji-3-2">小米智能门锁</p>
+                <p class="shouji-3-3">告别钥匙，畅享智能生活</p>
+                <p class="shouji-3-4">999元</p>
+            </div>
+        </div>
+    </div>
+    <!-- 搭配插图 -->
+    <div class="F">
+        <img src="../xiangmu/imgages/18.jpg" alt="">
+    </div>
+    <!-- 搭配 -->
+    <div class="jia">
+        <h1>搭配</h1>
+        <div class="shouji-4">
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/19.jpg" alt="">
+                <p class="shouji-3-2">小米降噪项圈蓝牙耳机</p>
+                <p class="shouji-3-3">无限降噪，静无止静</p>
+                <p class="shouji-3-4">339元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/19.jpg" alt="">
+                <p class="shouji-3-2">小米降噪项圈蓝牙耳机</p>
+                <p class="shouji-3-3">无限降噪，静无止静</p>
+                <p class="shouji-3-4">339元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/19.jpg" alt="">
+                <p class="shouji-3-2">小米降噪项圈蓝牙耳机</p>
+                <p class="shouji-3-3">无限降噪，静无止静</p>
+                <p class="shouji-3-4">339元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/19.jpg" alt="">
+                <p class="shouji-3-2">小米降噪项圈蓝牙耳机</p>
+                <p class="shouji-3-3">无限降噪，静无止静</p>
+                <p class="shouji-3-4">339元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/19.jpg" alt="">
+                <p class="shouji-3-2">小米降噪项圈蓝牙耳机</p>
+                <p class="shouji-3-3">无限降噪，静无止静</p>
+                <p class="shouji-3-4">339元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/19.jpg" alt="">
+                <p class="shouji-3-2">小米降噪项圈蓝牙耳机</p>
+                <p class="shouji-3-3">无限降噪，静无止静</p>
+                <p class="shouji-3-4">339元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/19.jpg" alt="">
+                <p class="shouji-3-2">小米降噪项圈蓝牙耳机</p>
+                <p class="shouji-3-3">无限降噪，静无止静</p>
+                <p class="shouji-3-4">339元</p>
+            </div>
+            <div class="shouji-4-1">
+                <img src="../xiangmu/imgages/19.jpg" alt="">
+                <p class="shouji-3-2">小米降噪项圈蓝牙耳机</p>
+                <p class="shouji-3-3">无限降噪，静无止静</p>
+                <p class="shouji-3-4">339元</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 底部-->
+    <div class="dibu">
+        <ul>
+            <li>预约服务维修</li><span>|</span>
+            <li>七天无理由退货</li><span>|</span>
+            <li>15天免费换货</li><span>|</span>
+            <li>满99元包邮</li><span>|</span>
+            <li>520余家售后网点</li>
+        </ul>
+    </div>
+    <!-- 返回顶部 -->
+    <div class="back">返回顶部</div>
+
+
+
+
+
+
+    <!-- 轮播图调用 -->
+    <script src="../xiangmu/js/.banner.js"></script>
+    <!-- 返回顶部 -->
+    <script src="../xiangmu/js/jquery.min.js"></script>
+    <!--  -->
+    <script src="./js/tools.js"></script>
+    <script>
+        // 轮播图调用
+        const oBanner = document.querySelector('.banner');
+        const ban = new setOpacity(oBanner);
+        ban.init();
+
+        // 返回顶部
+        $(window).scroll(function(){
+            if( $(window).scrollTop() > 500){
+                $('.back').slideDown(1000);
+            }else{
+                $('.back').slideUp(1000);
+            }
+        })
+
+        $('.back').click(function(){
+            $('html').animate({scrollTop:0},1000)
+        })
+
+   /*       */
+        // 退出登录:
+      // 设定时间是当前事件 -时间,让本地的cookie过期
+      var oBtnBack = document.querySelector('[name="back"]');
+
+oBtnBack.addEventListener('click' , ()=>{
+  // 设定时效是负数,直接时效,被删除
+  window.localStorage.clear()
+  mySetCookie('login' , 1 , -1);
+  window.alert('退出登录成功');
+});
+
+// 跳转购物车:如果有登录信息,也就是有login 可以跳转至 购物车页面
+//           否则,不跳转,去登录页面
+var oBtnBuyCar = document.querySelector('[name="buyCar"]');
+
+oBtnBuyCar.addEventListener('click' , ()=>{
+  // 获取cookie对象
+  var cookieObj = myGetCookie();
+
+  // 如果没有login,调用结果是undefined
+  if( cookieObj.login === undefined){
+    let bool = window.confirm('您还没有登录,点击确认,跳转登录页面,点击取消,没有跳转');
+    
+    if(bool === true){
+      window.location.href = `./pages/1.denglu.html?url=${window.location.href}`;
+    }
+  
+  }else{
+    window.location.href = './pages/5.gouwuche.html';
+  }
+
+})
+
+// 给登录按钮添加点击事件
+const oBtnLogin = document.querySelector('[name="login"]');
+oBtnLogin.addEventListener('click' , function(){
+    // console.log(window.location.href);
+  window.location.href = `./pages/1.denglu.html?url=${window.location.href}`;
+})
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

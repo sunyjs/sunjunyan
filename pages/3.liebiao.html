@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../jquery-pagination/pagination.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        img {
+            vertical-align: bottom;
+        }
+
+        body {
+            min-width: 1226px;
+        }
+
+        /*  */
+        .A {
+            height: 100px;
+            width: 1226px;
+            margin: auto;
+            /* border: 1px solid red; */
+            display: flex;
+            align-items: center;
+        }
+
+        .A-1 {
+            width: 55px;
+            height: 55px;
+            background: url(https://account.xiaomi.com/static/res/349d9c1/account-static/respassport/acc-2014/img/milogo.png);
+            background-repeat: no-repeat;
+        }
+
+        .A-2>ul {
+            display: flex;
+        }
+
+        .A-2 li {
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        .A-2 a:hover {
+            color: orange;
+        }
+
+        /* 选页栏 */
+        .B {
+            width: 590px;
+            height: 40px;
+            margin: auto;
+            border: 1px solid grey;
+        }
+
+        /* 列表页面 */
+        .C {
+            width: 1226px;
+            height: 2100px;
+            /* border: 1px solid red; */
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        .C li {
+            width: 603px;
+            height: 482px;
+            /* border: 1px solid rebeccapurple; */
+            float: left;
+            margin: 0 5px 20px 5px;
+        }
+
+        .C li:hover {
+            box-shadow: 6px 3px 4px 4px rgb(182, 179, 179);
+            transition: 1s;
+        }
+
+        .C img {
+            width: 100%;
+            height: 358px;
+        }
+
+        .C-1 {
+            display: flex;
+            justify-content: space-between;
+            /* padding: 0 50px; */
+        }
+
+        .C-2>h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            margin-top: 25px;
+        }
+
+        .C-2 p {
+            color: rgb(184, 179, 179);
+        }
+
+        .C-3 {
+            color: red;
+            margin-top: 50px;
+            font-size: 25px;
+           
+        }
+
+        .C-4 {
+            width: 54px;
+            line-height: 30px;
+            margin-top: 30px;
+            font-size: 18px;
+            background: red;
+            color: #fff;
+            border: 1px solid red;
+
+        }
+        .l{
+            width: 181px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="A">
+        <div class="A-1"></div>
+        <div class="A-2">
+            <ul>
+                <li>
+                    <a href="">小米手机</a>
+                </li>
+                <li>
+                    <a href="">Redmi红米</a>
+                </li>
+                <li>
+                    <a href="">电视</a>
+                </li>
+                <li>
+                    <a href="">笔记本</a>
+                </li>
+                <li>
+                    <a href="">家电</a>
+                </li>
+                <li>
+                    <a href="">路由器</a>
+                </li>
+                <li>
+                    <a href="">只能硬件</a>
+                </li>
+                <li>
+                    <a href="">服务</a>
+                </li>
+                <li>
+                    <a href="">社区</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 选页栏 -->
+    <div class="B"></div>
+
+    <div class="M-box m-style"></div>
+    <!-- 列表页面 -->
+    <div class="C">
+        <ul>
+            <!-- <li>
+                <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/83d4e418ccdea370034e82da9a22549f.jpg?w=1212&h=716"
+                    alt="">
+                <div class="C-1">
+                    <div class="C-2">
+                        <h4>Redmi 10X系列</h4>
+                        <p>有颜值的新势力</p>
+                    </div>
+                    <p class="C-3">999元起</p>
+                    <a href="#" class="C-4" role="button">查看商品详情</a>
+                </div>
+            </li>
+            <li>
+                <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/83d4e418ccdea370034e82da9a22549f.jpg?w=1212&h=716"
+                    alt="">
+                <div class="C-1">
+                    <div class="C-2">
+                        <h4>Redmi 10X系列</h4>
+                        <p>有颜值的新势力</p>
+                    </div>
+                    <p class="C-3">999元起</p>
+                </div>
+            </li>
+            <li>
+                <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/83d4e418ccdea370034e82da9a22549f.jpg?w=1212&h=716"
+                    alt="">
+                <div class="C-1">
+                    <div class="C-2">
+                        <h4>Redmi 10X系列</h4>
+                        <p>有颜值的新势力</p>
+                    </div>
+                    <p class="C-3">999元起</p>
+                </div>
+            </li>
+            <li>
+                <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/83d4e418ccdea370034e82da9a22549f.jpg?w=1212&h=716"
+                    alt="">
+                <div class="C-1">
+                    <div class="C-2">
+                        <h4>Redmi 10X系列</h4>
+                        <p>有颜值的新势力</p>
+                    </div>
+                    <p class="C-3">999元起</p>
+                </div>
+            </li>
+            <li>
+                <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/83d4e418ccdea370034e82da9a22549f.jpg?w=1212&h=716"
+                    alt="">
+                <div class="C-1">
+                    <div class="C-2">
+                        <h4>Redmi 10X系列</h4>
+                        <p>有颜值的新势力</p>
+                    </div>
+                    <p class="C-3">999元起</p>
+                </div>
+            </li>
+            <li>
+                <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/83d4e418ccdea370034e82da9a22549f.jpg?w=1212&h=716"
+                    alt="">
+                <div class="C-1">
+                    <div class="C-2">
+                        <h4>Redmi 10X系列</h4>
+                        <p>有颜值的新势力</p>
+                    </div>
+                    <p class="C-3">999元起</p>
+                </div>
+            </li>
+            <li>
+                <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/83d4e418ccdea370034e82da9a22549f.jpg?w=1212&h=716"
+                    alt="">
+                <div class="C-1">
+                    <div class="C-2">
+                        <h4>Redmi 10X系列</h4>
+                        <p>有颜值的新势力</p>
+                    </div>
+                    <p class="C-3">999元起</p>
+                    
+                </div>
+            </li> -->
+        </ul>
+
+    </div>
+
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/tools.js"></script>
+    <script src="../jquery-pagination/jquery.pagination.js"></script>
+    <script>
+        // 1,获取地址栏数据信息
+        var valObj = getUrlVal1();
+
+
+        // 2,调用函数,生成第一次的页面内容
+        // 是 第一页的内容
+        getAjaxVal(valObj, 1, 8);
+
+
+        // 定义一个函数来实现ajax请求,生成对应的页面内容
+        // 参数1: 获取的地址栏信息对象
+        // 参数2: 当前页数
+        // 参数3: 每页的数据数量
+        function getAjaxVal(object, page, line) {
+
+            console.log(object.cat_one_id);
+
+            // 2,根据获取的参数,向数据库发起请求
+            // 实际的查询结果,要分页显示
+            // 后端会执行分页查询,我们只需要发送参数即可
+            // 需要传参3个参数
+            // cat_on_id  查询的商品分类
+            // page       当前显示第几页内容   起始显示第一页内容
+            // line       每页显示几条数据     根据实际项目需求设定,当前设定为8个
+
+            $.ajax({
+                url: '../server/goods_list.php',
+                // 表示页数的参数不同,获取的执行结果也不同
+                data: { cat_one_id: object.cat_one_id, page: page, line: line },
+                type: 'get',
+                dataType: 'json',
+                success: function (result) {
+                    console.log('123');
+                    console.log(result)
+
+                    // 根据查询结果的数组,生成页面内容
+                    // 生成的li,写入到ul中
+
+                    // 根据查询结果的数组,渲染生成对应的html页面内容
+                    // 点击 查看商品详情 按钮, 跳转至 详情页 detail.html
+                    // 并且要传参 goods_id 索引数据
+
+                    let str = "";
+
+                    result.forEach((v) => {
+                        str += `
+        <li>
+                <img src="${v.goods_big_logo}" alt="...">
+                <div class="C-1">
+                    <div class="C-2">
+                        <h4>${v.goods_name}</h4>
+                    </div>
+                    <div class="l">
+                    <p class="C-3">${v.goods_price}</p>
+                    <a href="./4.xiangqing.html?goods_id=${v.goods_id}" class="C-4" role="button">查看商品详情</a>
+                    </div>
+
+                    
+                </div>
+            </li>
+      
+      `;
+
+                    })
+
+                    // 循环结束,将str写入到ul中
+                    $('.C > ul').html(str);
+
+
+                    // 请求成功,根据请求结果,生成分页显示内容
+                    $('.M-box').pagination({
+                        mode: 'fixed',                   // 固定分页按钮的数量
+                        pageCount: result[0].sumPage,   // 查询结果中的总页数
+                        totalData: result[0].row,       // 查询结果中的数据中数据
+                        current: result[0].page,        // 当前页数
+                        showData: line,                 // 每页的数据数量
+                        count: 5,                      // 设定总显示的页数
+                        coping: true,                   // 显示首页末页
+                        isHide: true,                   // 总页数为0或者1时,隐藏控件
+                        keepShowPN: true,               // 显示上一页下一页
+                        homePage: '首页',               // 首页的文本内容
+                        endPage: '末页',                // 首页的文本内容
+                        prevContent: '上一页',
+                        nextContent: '下一页',
+                        callback: function (res) {
+                            // 在插件定义的回调函数中,形参里存储数据信息
+
+                            // 获取点击分页显示按钮,要显示的页数信息
+                            // 插件定义好的,直接使用就可以了
+                            let p = res.getCurrent();
+
+                            // 可以根据新的页数,发起新的请求,渲染生成新的页面内容
+
+                            getAjaxVal(valObj, p, 8);
+                        }
+                    });
+                }
+            })
+        }
+        // 获取地址栏数据信息
+        function getUrlVal1() {
+            // 1,获取地址栏参数字符串
+            let str = decodeURI(window.location.search).substr(1);
+
+            // 创建存储结果的对象
+            let obj = {};
+
+            // 2 转化为数组 根据 分号空格转化
+            const arr1 = str.split('&')
+
+            // 3 循环变量数组,将数据字符串,根据=等号分割为数组
+            arr1.forEach(v => {
+                let arr2 = v.split('=');
+                obj[arr2[0]] = arr2[1];
+            })
+
+            return obj;
+
+        }
+
+
+    </script>
+</body>
+
+</html>

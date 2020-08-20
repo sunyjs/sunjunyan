@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        body {
+            background-color: rgb(247, 243, 243);
+        }
+
+        .A-1 {
+            width: 876px;
+            height: 786px;
+            background-color: #fff;
+            margin: auto;
+            padding:  0 34px;
+        }
+
+        .A-2 {
+            width: 49px;
+            height: 48px;
+            margin: 0 auto;
+            display: block;
+            cursor: default;
+            background-image: url(https://account.xiaomi.com/static/res/349d9c1/account-static/respassport/acc-2014/img/milogo.png);
+        }
+        .A-3{
+            font-size: 30px;
+            font-weight: normal;
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .A-4 input{
+            width: 346px;
+            height: 48px;
+            font-size: 15px;
+            line-height: 40px;
+            padding-left: 20px;
+            margin: 20px  254px;
+            
+        }
+        .A-4 button{
+            width: 370px;
+            height: 48px;
+            color: #fff;
+            font-size: 15px;
+            line-height: 40px;
+            padding-left: 20px;
+            margin: 20px  254px;
+            background-color: orangered;
+            border: orangered;
+        }
+        .A-5{
+            margin-top: 100px;
+            text-align: center;
+        }
+        .A-5 p{
+            color: rgb(175, 171, 171);
+        }
+        .A-5 span{
+            color: #000;
+            border-width: 900;
+        }
+        .A-6 p{
+            color:rgb(175, 171, 171);
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 最外层div -->
+    <div class="A">
+        <!-- 白色的底部 -->
+        <div class="A-1">    
+            <!-- 小米图标 -->
+            <div class="A-2"></div>
+            <h1 class="A-3">注册小米账号</h1>
+            <!-- 注册表 -->
+            <div class="A-4">
+                <input name="name" type="text" placeholder="用户名"><br>
+                <span class="spanspan" name="nameSpan"></span>
+                <input name="pwd1" type="password" placeholder="密码"><br>
+                <input name="pwd2" type="password" placeholder="确认密码">
+                <input  name="vc" type="text" placeholder="验证码"><a id="sc"></a>
+                <span name="vcSpan" ></span>
+                
+                <button>立即注册</button>
+            </div>
+            <div class="A-5">
+                <p>已阅读并同意：小米 <span>用户协议</span>和<span>隐私政策</span> </p>
+            </div>
+            <div class="A-6">
+                <p>小米公司版权所有-京ICP备10046444-京公网安备11010802020134号-京ICP证110507号</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/tools.js"></script>
+    <script>
+        // 获取标签对象
+        const oIptName = document.querySelector('[name="name"]');
+        const oIptPwd1 = document.querySelector('[name="pwd1"]');
+        const oIptPwd2 = document.querySelector('[name="pwd2"]');
+        const oIptVc = document.querySelector('[name="vc"]');
+  
+        const oIptVcSpan = document.querySelector('[name="vcSpan"]');
+        const oIptNameSpan = document.querySelector('[name="nameSpan"]');
+  
+        let bool;
+  
+  
+        // 1,给验证码input之后的span标签,写入验证码
+        const oVcA = document.querySelector('a');
+        // 给验证码后的span标签,写入验证码内容
+        oVcA.innerHTML = mySetVc();
+        // 点击标签,重新输入新的验证码
+        oVcA.addEventListener('click' , ()=>{
+          oVcA.innerHTML = mySetVc();
+        })
+  
+        /*
+          账号标签,失去焦点,验证账号是否存在
+          给账号input,添加失去焦点的操作
+        */
+  
+        oIptName.addEventListener( 'change' , ()=>{
+          // 获取输入的账号
+          let name = oIptName.value;
+  
+          // 发送ajax请求
+          $.ajax({
+            url:'../server/goods_select.php',
+            type:'post',
+            data:{userName:name},
+            dataType:'json',
+            success:result=>{
+              // 根据执行结果,写入提示信息
+              if(result.res === 1){
+                // 正好可以使用
+                oIptNameSpan.innerHTML = '账号可以使用';
+                bool = true;
+              }else{
+                oIptNameSpan.innerHTML = '账号不能使用';
+                bool = false;
+              }
+            }
+          })
+        })
+  
+  
+  
+        // 2,给标签添加事件
+        // 如果是没有使用form表单,就可以直接给button按钮添加点击事件
+        // 如果使用了form表单,就必须要给 form标签添加 submit 事件,并且阻止默认事件执行
+        const oBtn = document.querySelector('button');
+  
+        oBtn.addEventListener('click' , ()=>{
+          // 如果账号重复,也就是 bool 是 false,直接执行return
+          if(bool === false){
+            return;
+          }
+  
+          // 1, 获取所有标签的数据
+          let nameVal = oIptName.value;
+          let pwd1Val = oIptPwd1.value;
+          let pwd2Val = oIptPwd2.value;
+          let vcVal = oIptVc.value;
+  
+          // 2, 根据数据做验证
+          // 可以任意写你们喜欢的验证效果
+          
+          // 主要是 如果验证不通过,要使用 return 来终止程序的执行
+          // 不执行 之后的 ajax请求的发送
+  
+          // 统一大小写,就不用区分验证码的大小写了
+          
+          // if( vcVal.toUpperCase() !== oVcA.innerHTML.toUpperCase() ){
+          //   oIptVcSpan.innerHTML = '验证码错误';
+          //   return;
+          // }else{
+          //   oIptVcSpan.innerHTML = '';
+          // }
+  
+          // 3, 如果之前的验证判断都通过了,可以发送ajax请求,来执行对应的程序
+          $.ajax({
+            url:'../server/goods_res.php',
+            type:'post',
+            data:{userName : nameVal , userPwd : pwd1Val},
+            dataType:'json',
+            success : result=>{
+              // 注册成功,返回首页面
+              // 注册失败,继续注册
+              if(result.res === 1){
+                // 返回值是1,表示注册成功
+                window.alert('注册成功,点击确定,跳转首页面')
+                window.location.href = '../index.html';
+              }else{
+                // 返回值不是1,表示注册失败
+                window.alert('注册失败,用户名重复,请您重新设定用户名,玩命继续注册');
+              }
+  
+            }
+          })
+        })
+  
+  
+  
+      </script>
+</body>
+
+</html>

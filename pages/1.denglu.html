@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .mi {
+            display: flex;
+            flex-direction: column;
+            margin-top: 40px;
+            margin-left: 70px;
+        }
+
+        .mi>h1 {
+            font-size: 50px;
+            /* margin: 30px; */
+
+        }
+
+        .mi h4 {
+            font-size: 15px;
+            /* margin: 10px; */
+
+        }
+
+        .beijing {
+            height: 588px;
+            width: 100%;
+            background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/aece569d6689b4c461bb53efd9eea9c7.jpg);
+            position: absolute;
+            left: 0;
+            background-repeat: no-repeat;
+            background-position: top center;
+
+        }
+
+        .baikuang {
+            width: 410px;
+            height: 556px;
+            background-color: #fff;
+            position: relative;
+            top: 30px;
+            left: 785px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .denglu {
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            line-height: 87px;
+            color: orangered;
+        }
+
+
+        .bai>input {
+            width: 320px;
+            font-size: 15px;
+            padding: 15px;
+            margin-top: 25px;
+            margin-left: 28px;
+        }
+
+        .bai>button {
+            width: 356px;
+            font-size: 15px;
+            padding: 15px;
+            margin-top: 30px;
+            margin-left: 28px;
+            background-color: orangered;
+            border: orangered;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .bai .shou {
+            color: orangered;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .zhuce {
+            color: gray;
+            font-size: 15px;
+        }
+
+        .wangji {
+            color: gray;
+            font-size: 15px;
+        }
+
+        .bai span {
+            color: gray;
+        }
+
+        .zhuce {
+            margin-left: 110px;
+        }
+
+        .zhuce:hover {
+            color: orangered;
+        }
+
+        .wangji:hover {
+            color: orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mi">
+        <h1>小米商城</h1>
+        <h4>让每个人都能享受科技的乐趣</h4>
+    </div>
+    <div class="beijing">
+        <div class="baikuang">
+            <form >
+                <div class="bai">
+                    <p class="denglu">账号登录</p>
+                    <input type="text" id="username" placeholder="邮箱/手机号码/小米ID"><br>
+                    <input type="password" id="password" placeholder="密码"><br>
+
+                    <button>登录</button>
+
+                    <a href="../pages/2.zhuce.html" class="shou"> 手机短信登录/注册</a><br>
+                    <a href="../pages/2.zhuce.html" class="zhuce">立即注册</a>
+                    <span>|</span>
+                    <a href="" class="wangji">忘记密码</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/tools.js"></script>
+    <script>
+        // 输入账号密码,进行验证,符合格式要求,发送ajax请求,做登录验证
+        // 如果是 form表单,要给 form标签,添加 submit 事件,并且组织默认事件执行
+        // 如果不是 form表单,给 button添加点击事件
+
+        const oForm = document.querySelector('form');
+        const oIptName = document.querySelector('#username');
+        const oIptPwd = document.querySelector('#password');
+
+        oForm.addEventListener('submit', e => {
+            // 阻止默认事件
+            e.preventDefault();
+
+            // 1,获取标签的数据
+            let oIptNameVal = oIptName.value;
+            let oIptPwdVal = oIptPwd.value;
+
+            // 2,做格式验证,符合需求之后,再通过ajax请求传参
+
+            // 3,发送ajax请求
+            $.ajax({
+                url: '../server/goods_login.php',
+                type: 'post',
+                data: { userName: oIptNameVal, userPwd: oIptPwdVal },
+                dataType: 'json',
+                success: result => {
+                    if (result.res === 1) {
+
+                        // 登录成功,设定登录的cookie信息,并且跳转首页面
+                        // 设定cookie也有同源问题
+                        // 默认设定的cookie只有同一个文件夹中的文件都可以使用
+                        // 当前文件夹外的文件,默认是不能使用cookie
+                        // 给 cookie 添加新的属性 path=/ 
+                        // 让所有www中的文件都可以访问这个cookie
+                        mySetCookie('login', 1, 7 * 24 * 60 * 60);
+                        window.alert('登录成功,点击确定,哪儿来的回哪儿去');
+                        // 获取地址栏中的参数信息,因为来的地址,有可能也有参数,不能使用函数获取了
+                        // decodeURI() 获取 window.location.search 转化为正常的中文显示
+                        // 找第一个 = 等号 之后, 是 要跳转的地址
+                        // 也就是从第一个 =等号之后,下一个索引下标开始截取
+
+                        let url = decodeURI(window.location.search).substr(decodeURI(window.location.search).indexOf('=') + 1);
+                        console.log(url);
+                        window.location.href =`${url}` ;
+                    } else {
+                        window.alert('登录失败,请您检查账号密码,继续玩命登录');
+                    }
+                }
+            })
+
+
+        })
+    </script>
+</body>
+
+</html>

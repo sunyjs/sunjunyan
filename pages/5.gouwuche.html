@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+
+        img {
+            vertical-align: bottom;
+        }
+
+        body {
+            min-width: 1226px;
+        }
+
+        /*  */
+        .gou {
+            font-size: 22px;
+        }
+
+        /* 选项 */
+        .xuanxiang {
+            width: 1108px;
+            height: 75px;
+            margin: auto;
+            border: 1px solid rgb(118, 118, 161);
+            margin-top: 30px;
+            background: rgb(148, 167, 223);
+            display: flex;
+            align-items: center;
+        }
+
+        .xuanxiang button {
+            color: #fff;
+            padding: 7px 12px;
+            border: 1px solid rgb(156, 90, 90);
+            background: rgb(218, 86, 86);
+            border-radius: 10px;
+            margin-left: 5px;
+        }
+
+        .xuanxiang button:hover {
+            background: rgb(150, 73, 73);
+        }
+
+        /* 正文 */
+        .big {
+            width: 1088px;
+            /* height: 400px; */
+            border: 1px solid rgb(118, 118, 161);
+            margin: auto;
+            padding: 10px;
+        }
+
+        .big li {
+            width: 1066px;
+            height: 100px;
+            border: 1px solid rgb(88, 88, 224);
+            margin: auto;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .big img {
+            width: 100px;
+            height: 100px;
+            margin-left: 20px;
+        }
+
+        .big2 h5 {
+            font-size: 16px;
+        }
+
+        .big2 p {
+            color: red;
+            font-size: 20px;
+        }
+
+        .big2 span {
+            font-weight: 900;
+        }
+
+        .big2 button {
+            background: red;
+            border: red;
+            color: #fff;
+            padding: 3px;
+            border-radius: 4px;
+        }
+
+        .big3 {
+            font-size: 0;
+            margin-left: 460px;
+            margin-top: 10px;
+        }
+
+        .big3 button {
+            padding: 7px;
+            inset-inline: 0;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gou">
+        <h2>我是一个购物车页面</h2>
+    </div>
+    <!-- 选择 -->
+    <div class="panel panel-info">
+        <div class="xuanxiang">
+            <button name="yes">全选</button>
+            <button name="no">不选</button>
+            <button name="not">反选</button>
+        </div>
+        <!-- 正文 -->
+        <div class="big">
+            <ul>
+                <!-- <li>
+                    <input name="kuang" type="checkbox" checked>
+                    <img src="../imgages/22.jpg" alt="">
+                    <div class="big2">
+                        <h5>滴滴滴滴滴滴滴</h5>
+                        <p><span>￥</span>59</p>
+                        <button>我不要了</button>
+                    </div>
+                    <div class="big3">
+                        <button>-</button>
+                        <button>1</button>
+                        <button>+</button>
+                    </div>
+                </li> -->
+            </ul>
+            <!-- 合计 -->
+            <!-- <div>
+                <h3>您购买了xxx中商品，一共是xxx件货物</h3>
+                <h3>您需要支付xxx元人民币，快去看看余额够不够</h3>
+            </div> -->
+        </div>
+    </div>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/tools.js"></script>
+
+    <script>
+
+        // <ul class="cart-list"></ul> 中 li是根据购物车数据,动态生成的
+        // 也就是 根据 localStorage 中 cart 数据信息生成的
+        // 如果 是 空购物车 生成 一个独立的页面
+        // 如果 购物车有内容,要根据内容渲染生成页面
+        // 没有购物车数据  localStorage.getItem( 'cart' ) 结果是是 null
+
+        // 页面中的操作,本质上,应该是修改数据中的数据,然后根据新的数据,重新渲染生成页面
+        // 当前没有购物车的数据库,操作是 localStorage 本地浏览器存储的数据
+        // 应该是 修改 localStorage 中的 数据,生成新的本地数据,对应的重新渲染,生成新的页面内容
+
+        // 获取购物车数组内容,需要把json串,还原为对应的数组
+        const cartArr = JSON.parse(localStorage.getItem('gouwuche'));
+
+        const oFootDiv = document.querySelector('.big');
+
+        const oPanel = document.querySelector('.panel');
+
+        setCartList(cartArr, oFootDiv);
+
+
+        // 添加点击事件,实际操作的是 localStorage 中 存储的 cart 数组
+        // 根据新的数组,渲染生成新的页面
+
+        oPanel.addEventListener('click', e => {
+            if (e.target.getAttribute('name') === 'yes') {
+                // 点击全选,给数组的所有数值,buy都定义为 true
+                cartArr.forEach(v => {
+                    v.buy = true;
+                })
+            }
+
+            if (e.target.getAttribute('name') === 'no') {
+                // 点击不选,给数组的所有数值,buy都定义为 false
+                cartArr.forEach(v => {
+                    v.buy = false;
+                })
+            }
+
+            if (e.target.getAttribute('name') === 'not') {
+                // 点击反选,给数组的所有数值,buy都定义为 当前值取反
+                cartArr.forEach(v => {
+                    v.buy = !(v.buy);
+                })
+            }
+
+
+            if (e.target.getAttribute('name') === 'che') {
+                // 点击购物数据前的 复选框,执行效果是,当前状态取反
+                // 不是修改所有的数据,是修改 数组中 goods_is 与点击标签 goods_id 相同的数据
+                // 属性值是字符串类型,使用 == 比较
+                cartArr.forEach(v => {
+                    if (v.goods_id == e.target.getAttribute('goods_id')) {
+                        v.buy = !(v.buy);
+
+                    }
+                })
+            }
+
+            if (e.target.getAttribute('name') === 'del') {
+                // 点击我不要了按钮,执行的是删除操作
+                let bool = window.confirm('这么好的产品,您真的不要了吗?');
+
+                // 去过点击确定,bool存储true,再执行删除操作
+                if (bool) {
+
+                    // 找到goods_id相同的数据,执行删除操作
+                    cartArr.forEach((v, k) => {
+                        if (v.goods_id == e.target.getAttribute('goods_id')) {
+                            cartArr.splice(k, 1);
+                        }
+                    })
+                }
+            }
+
+            // 执行 + 操作, 不能超过库存
+            // 方法1: 可以添加判断,如让数值超过库存数值
+            // 方法2: 如果数值是库存数值,添加禁用属性
+
+            if (e.target.getAttribute('name') === 'jia') {
+                // 找到goods_id相同的数据,购买数量++ num的数据++
+                cartArr.forEach((v) => {
+                    if (v.goods_id == e.target.getAttribute('goods_id')) {
+                        v.num++;
+                        // if( v.num > v.goods_number){
+                        //   v.num = v.goods_number;
+                        // }
+                    }
+                })
+            }
+
+            // 执行 - 操作, 不能小于 1
+            if (e.target.getAttribute('name') === 'jian') {
+                // 找到goods_id相同的数据,购买数量++ num的数据++
+                cartArr.forEach((v) => {
+                    if (v.goods_id == e.target.getAttribute('goods_id')) {
+                        v.num--;
+                        // if( v.num < 1){
+                        //   v.num = 1;
+                        // }
+                    }
+                })
+            }
+
+            // 根据新的数组,生成页面
+            setCartList(cartArr, oFootDiv);
+
+            // 将新的数组,再赋值给 localStorage cart中
+            localStorage.setItem('gouwuche', JSON.stringify(cartArr));
+        })
+
+
+        // 总结:
+        // 修改步骤:
+        //    1,根据点击的标签,执行不同的修改操作
+        //    2,修改的是获取的 localStorage 中 存储 购物车数据 的数组
+        //    3,根据新的数组,生成 新的页面
+        //    4,把新的数组,重新写入到 localStorage 购物车中去
+
+
+
+        function setCartList(array, ele) {
+            // 在生成页面的时候,根据购物车数据信息,生成对应的钱数
+
+
+            // 判断数组,如果是一个空数组,也就是购物车没有数据了
+            if (array.length === 0) {
+                // 购物车是空,生成一个独立的页面
+                let str = `<li><h1>您的男朋友已经给您清空了购物车,赶紧再去选购吧,顺便记得帮他还信用卡</h1></li>`;
+                $(ele).html(str);
+            } else {
+                // 定义变量存储商品种类,商品个数,商品钱数
+                // 在循环外,定义变量,存储相应的数据
+                let type = 0;  // 种类
+                let n = 0;     // 数量
+                let pay = 0;   // 金额
+
+
+                // 根据购物车数组的数据,循环遍历,生成页面内容
+                // 不光是 li ,还有 计算的钱数等信息
+                let str = '';
+
+                // 拼接ul的起始部分
+                str += '<ul class="cart-list">';
+
+                // 通过循环拼接li标签
+                array.forEach(v => {
+                    // v 中存储的是每个中商品的信息
+                    // 如果商品要支付要购买 也就是 buy存储的是 true
+                    // 就是要计算种类,件数,金额
+                    if (v.buy) {
+                        // 种类数值+1
+                        type++;
+                        // 增加当前商品对应的件数
+                        n += v.num;
+                        // 购买金额 累加 单价*件数
+                        pay += v.goods_price * v.num;
+                    }
+
+                    str += `<li>
+                    <input name="che" goods_id="${v.goods_id}" type="checkbox" ${v.buy ? 'checked' : ''}>
+                    <img src="${v.goods_small_logo}" alt="">
+                    <div class="big2">
+                        <h5>${v.goods_name}</h5>
+                        <p><span>￥</span>${v.goods_price}</p>
+                        <button name="del" goods_id=${v.goods_id}>我不要了</button>
+                    </div>
+                    <div class="big3">
+                        <button type="button" name="jian" goods_id=${v.goods_id} ${v.num == 1 ? 'disabled' : ''}>-</button>
+                        <button disabled >${v.num}</button>
+                        <button name="jia" goods_id=${v.goods_id} ${v.num == v.goods_number ? 'disabled' : ''}>+</button>
+                    </div>
+                </li>`;
+                })
+
+                // 拼接ul的结束部分 以及 下面计算的钱数
+                str += `
+                <div>
+                <h3>您购买了${type}中商品，一共是${n}件货物</h3>
+                <h3>您需要支付${pay.toFixed(2)}元人民币，快去看看余额够不够</h3>
+            </div>`;
+
+
+                $(ele).html(str);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

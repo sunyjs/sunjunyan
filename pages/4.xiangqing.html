@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        img {
+            vertical-align: bottom;
+        }
+
+        body {
+            min-width: 1226px;
+        }
+
+        /*  */
+        .A {
+            height: 100px;
+            width: 1226px;
+            margin: auto;
+            /* border: 1px solid red; */
+            display: flex;
+            align-items: center;
+        }
+
+        .A-1 {
+            width: 55px;
+            height: 55px;
+            background: url(https://account.xiaomi.com/static/res/349d9c1/account-static/respassport/acc-2014/img/milogo.png);
+            background-repeat: no-repeat;
+        }
+
+        .A-2>ul {
+            display: flex;
+        }
+
+        .A-2 li {
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        .A-2 a:hover {
+            color: orange;
+        }
+
+        /* 详细文字 */
+        .xiang {
+            width: 1226px;
+            line-height: 70px;
+            margin: auto;
+        }
+
+        /* 商品详情信息 */
+        .X {
+            width: 1131px;
+            line-height: 40px;
+            margin: auto;
+            border: 1px solid rgb(172, 169, 169);
+            background: rgb(221, 208, 208);
+        }
+
+        .X>p {
+            margin-left: 20px;
+        }
+
+        /* 大边框 */
+        .box {
+            width: 1100px;
+            /* height: 3000px; */
+            border: 1px solid rgb(172, 169, 169);
+            margin: auto;
+            /* padding: 15px; */
+        }
+
+        .box-1 {
+            width: 100%;
+            height: 300px;
+            border: 1px solid rebeccapurple;
+            display: flex;
+        }
+
+        .box-1-1 {
+            width: 300px;
+            height: 300px;
+        }
+
+        .box-1-1>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .box-1-2 {
+            margin-left: 10px;
+        }
+
+        .box-1-2>h4 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .box-1-3 span {
+            font-size: 60px;
+            color: red;
+        }
+
+        .box-1-4 button {
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #333;
+            inset-block: 0;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        .box-1-4 {
+            font-size: 0;
+        }
+
+        .box-1-5 {
+            margin-top: 20px;
+        }
+
+        .box-1-5 a {
+            color: white;
+            font-size: 18px;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+
+        }
+
+        .box-1-6 {
+            border: 1px solid #eea236;
+            background-color: #f0ad4e;
+        }
+
+        .box-1-7 {
+            border: 1px solid #d43f3a;
+            background-color: #d9534f;
+
+        }
+
+        /* 文字 */
+        .S li {
+            float: left;
+            padding-right: 10px;
+            font-size: 14px;
+            line-height: 30px;
+        }
+
+        .big {
+            width: 1094px;
+            /* height: 2210px; */
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="A">
+        <div class="A-1"></div>
+        <div class="A-2">
+            <ul>
+                <li>
+                    <a href="">小米手机</a>
+                </li>
+                <li>
+                    <a href="">Redmi红米</a>
+                </li>
+                <li>
+                    <a href="">电视</a>
+                </li>
+                <li>
+                    <a href="">笔记本</a>
+                </li>
+                <li>
+                    <a href="">家电</a>
+                </li>
+                <li>
+                    <a href="">路由器</a>
+                </li>
+                <li>
+                    <a href="">只能硬件</a>
+                </li>
+                <li>
+                    <a href="">服务</a>
+                </li>
+                <li>
+                    <a href="">社区</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <!--  -->
+        <div class="xiang">
+            <h1>详细内容介绍</h1>
+        </div>
+        <!-- 商品详情信息 -->
+        <div class="X">
+            <p>商品详情信息</p>
+        </div>
+        <!-- 大边框 -->
+        <div class="box">
+          
+            <!-- <div class="box box-default">
+                <div class="box-1-1">
+                    <img src="../imgages/20.jpg" alt="">
+                </div>
+                <div class="box-1-2">
+                    <h4>吊灯吸顶灯北欧客厅吊灯餐厅卧室吊灯后现代个性创意设计师吊灯时尚艺术灯具</h4>
+                    <p class="box-1-3">
+                        <span>￥</span>
+                        <span>478.00</span>
+                    </p>
+                    <div class="box-1-4">
+                        <button type="button">XL</button>
+                        <button type="button">L</button>
+                        <button type="button">M</button>
+                        <button type="button">S</button>
+                        <button type="button">XS</button>
+                    </div>
+                    <p class="box-1-5">
+                        <a href="javascript:;" class="box-1-6">立即购买</a>
+                        <a href="javascript:;" class="box-1-7">加入购物车</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="S">
+                <ul>
+                    <li>
+                        <a href="#">商品详细信息</a>
+                    </li>
+                    <li>
+                        <a href="#">商品参数信息</a>
+                    </li>
+                    <li>
+                        <a href="#">相关商品</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="big">
+
+            </div> -->
+
+        </div>
+
+
+
+    </div>
+
+    <script src="../js/tools.js"></script>
+    <script src="../js/jquery.min.js"></script>
+
+    <script>
+        // 1,通过函数,获取地址栏参数
+        const valObj = getUrlVal();
+
+        // 定义变量,存储响应体数据
+        let res = {};
+console.log(res)
+        // 2,发送ajax请求,渲染生成页面内容
+        $.ajax({
+            url: '../server/goods_detail.php',
+            data: { goods_id: valObj.goods_id },
+            type: 'post',
+            dataType: 'json',
+            success: function (result) {
+                // 给全局变量res 赋值 , 存储 result 结果,也就是当前商品信息
+                res = result;
+                console.log(result);
+                let str = `
+                <div class="box1">
+            <div class="box-1">
+                <div class="box-1-1">
+                    <img src="${result.goods_small_logo}" alt="">
+                </div>
+                <div class="box-1-2">
+                    <h4>${result.goods_name}</h4>
+                    <p class="box-1-3">
+                        <span>￥</span>
+                        <span>${result.goods_price}</span>
+                    </p>
+                    <div class="box-1-4">
+                        <button type="button">XL</button>
+                        <button type="button">L</button>
+                        <button type="button">M</button>
+                        <button type="button">S</button>
+                        <button type="button">XS</button>
+                    </div>
+                    <p class="box-1-5">
+                        <a href="javascript:;" class="box-1-6">立即购买</a>
+                        <a href="javascript:;" class="box-1-7" name="join" >加入购物车</a>
+                    </p>
+                </div>
+            </div>
+            <!--  -->
+            <div class="S">
+                <ul>
+                    <li>
+                        <a href="#">商品详细信息</a>
+                    </li>
+                    <li>
+                        <a href="#">商品参数信息</a>
+                    </li>
+                    <li>
+                        <a href="#">相关商品</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="big">
+                ${result.goods_introduce}
+            </div>
+
+        </div>
+    `;
+
+                $('.box').append(str);
+            }
+        })
+
+
+       
+        // 页面内容是动态生成的,要通过事件委托,执行点击事件
+        // 不能直接获取标签对象,加载事件
+        // 因为 ajax请求是 异步执行的
+//  localStorage.setItem('gouwuche', JSON.stringify(res))
+        const oFather = document.querySelector('.box');
+
+        oFather.addEventListener('click', e => {
+
+
+
+            // console.log(localStorage.getItem('gouwuche'));
+            if (e.target.getAttribute('name') === 'join') {
+
+                console.log(123)
+                // 1先判断,是否已经登录,看有没有 cookie 中的 login
+                const cookieObj = myGetCookie();
+
+                // 2,创建一个数组,存储购物车数据内容
+                let arr = [];
+
+                if (cookieObj.login === undefined) {
+                    // 没有登录,先登录
+                    let bool = window.confirm('您还没有登录,点击确定,跳转登录,点击取消,啥也不干');
+
+                    if (bool) {
+                        // 跳转登录页面,携带当前页面信息
+                        // 跳转的地址是 登录页面地址携带当前页面地址信息参数
+                        window.location.href = `./1.denglu.html?url=${window.location.href}`;
+                    }
+                }
+                 else {
+                    // 已经登录,要把商品信息添加到购物车中
+                    // 如果没有这个商品信息,执行新增商品信息
+                    // 如果已经有这个商品,购买数量+1
+                    // 实现购物车效果,应该是在数据库中做相关的操作
+                    // 现在没有数据库,而且购物车的数据库,执行非常复杂
+                    // 使用 localStorage 来模拟 购物车数据库
+
+                    // 1, 购物车信息不存在 调用结果是 null ,直接写入商品信息
+                    if (localStorage.getItem('gouwuche') === null){
+                        console.log(123)
+                        // 当前商品的所有信息都存储在 result 形参中 是对象形式
+                        // 需要添加一些属性值 购买数量1 , 默认购买
+                        // 在 全局变量res,操作当前商品信息
+                        res.num = 1;     // 购买数量是1
+                        res.buy = true;  // 默认购买
+                        // 将新增数据之后的result对象,写入到数组中
+                        arr.push(res);
+                       // localStorage.setItem('gouwuche', JSON.stringify(arr));
+                    } else {
+                        // 如果有购物车数据
+                        // 如果没有当前商品,新增商品信息
+                        // 如果有当前商品,当前商品数量+1
+
+                        // 定义一个变量
+                        let bool = true;
+
+                        arr = JSON.parse(localStorage.getItem('gouwuche'));
+
+                        arr.forEach((v, k) => {
+                            // 找是否有与当前商品相同的goods_id
+                            // 有相同的goods_id,证明商品已经存在,数值+1
+                            // 没有相同的goods_id,证明商品不存在,直接设定,写入新的商品信息
+                            if (v.goods_id === res.goods_id) {
+                                // 有商品,购买数量+1
+                                v.num++;
+                                bool = false;
+                            }
+                         })
+
+
+                        // 循环结束如果 bool 还是true,证明购物车中没有当前商品
+                        // 执行新增商品操作
+                        if (bool) {
+                            res.num = 1;
+                            res.buy = true;
+                            arr.push(res);
+                        }
+                    }
+                    // 将arr存储到localStorage 中
+                    localStorage.setItem( 'gouwuche' , JSON.stringify(arr) );
+
+                    // 点击购物车,将所有的商品信息都加入购物车之后,跳转购物车页面
+                    window.location.href = './5.gouwuche.html';
+                }
+                
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>
